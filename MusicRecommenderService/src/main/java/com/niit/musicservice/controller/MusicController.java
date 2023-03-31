@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v3")
 public class MusicController {
 
 
@@ -23,7 +23,7 @@ public class MusicController {
         this.musicService = musicService;
 
     }
-    @PostMapping("/user")
+    @PostMapping("/music")
     public ResponseEntity<?> saveUser(@RequestBody Music music)  {
         return new ResponseEntity<>(musicService.saveUser(music), HttpStatus.CREATED);
     }

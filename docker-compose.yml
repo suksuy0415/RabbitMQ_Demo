@@ -69,6 +69,25 @@ services:
       SPRING_RABBITMQ_HOST: rabbitmq-container
     restart: always
 
+
+  usermusicservice:
+    container_name: user-music-service
+    build: MusicRecommenderService/
+    networks:
+      - my-network
+      #    hostname: localhost
+      #    network_mode: host
+    ports:
+      - 8082:8082
+    depends_on:
+        - mongodbservice
+        - eurekaServer
+        - cloudapiservice
+    restart: always
+    environment:
+      SPRING_RABBITMQ_HOST: rabbitmq-container
+
+
   cloudapiservice:
     container_name: spring-cloud-api-gateway
     image: cloud-api-service
